@@ -1,6 +1,7 @@
 // 使用vuex进行全局状态管理
-
 import {createStore} from "vuex";
+// 导入vuex自动持久化
+import createPersistedState from "vuex-persistedstate";
 
 const store = createStore({
     //严格模式，在生产环境中，不能打开
@@ -46,7 +47,18 @@ const store = createStore({
     //vuex中的计算属性
     getters: {},
     //全局状态模块
-    modules: {}
+    modules: {},
+    //vuex配置自动持久化插件
+    plugins: [
+        createPersistedState({
+            //reducer配置需要持久化的数据
+            reducer: state => {
+                return {
+                    userInfo: state.userInfo
+                };
+            }
+        })
+    ]
 });
 
 

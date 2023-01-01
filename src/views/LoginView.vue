@@ -40,7 +40,9 @@
                         //第一种修改数据方法
                         // this.$store.commit("updateUserInfo", data);
                         //第二种修改数据方法，使用mapMutations
-                        this.updateUserInfo(data);
+                        this.updateUserInfo(data.data);
+                        //存储token
+                        localStorage.setItem("token", data.data.token);
                         //跳转
                         this.$router.push("/");
                     } else {
@@ -54,9 +56,10 @@
 <template>
     <div class="login-container">
         <div class="form-wrap">
-            <h1 class="header">后台管理系统{{userInfo}}</h1>
+            <h1 class="header">后台管理系统{{userInfo.adminname}}</h1>
             <el-input v-model="userName" placeholder="请输入管理员账号"/>
-            <el-input type="password" class="psw" v-model="userPassword" placeholder="请输入管理员密码"/>
+            <el-input type="password" class="psw" v-model="userPassword" placeholder="请输入管理员密码"
+                      @keydown.enter="submitForm" show-password/>
             <el-button type="success" @click="submitForm">登录</el-button>
         </div>
     </div>

@@ -22,6 +22,14 @@
                 return this.collapse ? "200px" : "54px";
             }
         },
+        //生命周期函数
+        mounted() {
+            //用户没有登录
+            if (!this.$store.state.userInfo.adminname) {
+                this.$router.push("/login");
+                return;
+            }
+        },
         //注册组件
         components: {
             Fold,
@@ -39,6 +47,10 @@
                 // this.$store.commit("addNum",8);
                 //传参异步执行
                 this.$store.dispatch("addActionNum", 8);
+            },
+            logout() {
+                localStorage.clear();
+                this.$router.push("/login");
             }
         }
     };
@@ -63,6 +75,7 @@
                     <el-icon :size="30" @click="collapse=!collapse">
                         <component :is="headerLeft"></component>
                     </el-icon>
+                    <span>欢迎 {{$store.state.userInfo.adminname}} <el-button @click="logout">退出</el-button></span>
                 </el-header>
                 <!--内容-->
                 <el-main>
