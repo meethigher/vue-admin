@@ -9,7 +9,9 @@ const store = createStore({
     state() {
 
         return {
-            count: 100
+            count: 100,
+            //用户信息
+            userInfo: {}
         };
     },
     //项目中唯一修改数据的方法
@@ -20,6 +22,10 @@ const store = createStore({
         },
         addNum(state, amount) {
             state.count += amount;
+        },
+        //保存用户数据
+        updateUserInfo(state, value) {
+            state.userInfo = value;
         }
     },
     //异步修改数据的地方

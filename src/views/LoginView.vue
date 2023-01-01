@@ -31,6 +31,9 @@
                 }).then(res => {
                     let data = res.data;
                     if (data.code === "200") {
+                        //跳转页面前，将数据存储
+                        //第一种修改数据方法
+                        this.$store.commit("updateUserInfo", data);
                         this.$router.push("/");
                     } else {
                         ElMessage.error(data.message);

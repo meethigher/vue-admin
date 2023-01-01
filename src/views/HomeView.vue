@@ -66,6 +66,8 @@
                 </el-header>
                 <!--内容-->
                 <el-main>
+                    {{$store.state.userInfo}}<br>
+                    Main
                     {{$store.state.count}}<br>
                     <button @click="setCount">修改全局状态方法</button>
                 </el-main>
