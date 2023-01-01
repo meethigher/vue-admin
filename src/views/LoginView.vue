@@ -3,6 +3,7 @@
     import {login} from "../api/user";
     import md5 from "md5";
     import axios from "axios";
+    import {mapState, mapMutations} from "vuex";
 
     export default {
         name: "LoginView",
@@ -15,7 +16,11 @@
                 "userPassword": ""
             };
         },
+        computed: {
+            ...mapState(["userInfo"])
+        },
         methods: {
+            ...mapMutations(["updateUserInfo"]),
             submitForm() {
                 if (this.userName.length < 4) {
                     ElMessage.error("账号长度过短!");
@@ -33,7 +38,10 @@
                     if (data.code === "200") {
                         //跳转页面前，将数据存储
                         //第一种修改数据方法
-                        this.$store.commit("updateUserInfo", data);
+                        // this.$store.commit("updateUserInfo", data);
+                        //第二种修改数据方法，使用mapMutations
+                        this.updateUserInfo(data);
+                        //跳转
                         this.$router.push("/");
                     } else {
                         ElMessage.error(data.message);
@@ -46,7 +54,7 @@
 <template>
     <div class="login-container">
         <div class="form-wrap">
-            <h1 class="header">后台管理系统</h1>
+            <h1 class="header">后台管理系统{{userInfo}}</h1>
             <el-input v-model="userName" placeholder="请输入管理员账号"/>
             <el-input type="password" class="psw" v-model="userPassword" placeholder="请输入管理员密码"/>
             <el-button type="success" @click="submitForm">登录</el-button>
