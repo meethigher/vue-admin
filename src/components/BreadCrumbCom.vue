@@ -1,11 +1,12 @@
 <template>
   <el-breadcrumb separator=">">
-    <el-breadcrumb-item v-for="item in list" :key="item.name" :to="{name: item.name}">{{item.label}}</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="item in list" :key="item.name" :to="{name: item.name}">{{ item.label }}
+    </el-breadcrumb-item>
 
-<!--    <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>-->
-<!--    <el-breadcrumb-item><a href="/">promotion management</a></el-breadcrumb-item>-->
-<!--    <el-breadcrumb-item>promotion list</el-breadcrumb-item>-->
-<!--    <el-breadcrumb-item>promotion detail</el-breadcrumb-item>-->
+    <!--    <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>-->
+    <!--    <el-breadcrumb-item><a href="/">promotion management</a></el-breadcrumb-item>-->
+    <!--    <el-breadcrumb-item>promotion list</el-breadcrumb-item>-->
+    <!--    <el-breadcrumb-item>promotion detail</el-breadcrumb-item>-->
   </el-breadcrumb>
 </template>
 <script>
@@ -50,6 +51,8 @@ export default {
       //初始化时，令handler调用一次
       immediate: true,
       handler(route) {
+        //记录当前的页面路由路径
+        this.$store.commit("updateCurrentPath",route.path);
         //监听到路由发生变化之后，获取跳转的路径和对应的名称
         this.list = route.matched.map(item => {
           /**

@@ -12,7 +12,9 @@ const store = createStore({
         return {
             count: 100,
             //用户信息
-            userInfo: {}
+            userInfo: {},
+            //记录当前的路由路径
+            currentPath: ""
         };
     },
     //项目中唯一修改数据的方法
@@ -27,6 +29,10 @@ const store = createStore({
         //保存用户数据
         updateUserInfo(state, value) {
             state.userInfo = value;
+        },
+        //修改路由路径的方法
+        updateCurrentPath(state, value) {
+            state.currentPath = value;
         }
     },
     //异步修改数据的地方

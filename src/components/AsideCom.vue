@@ -1,5 +1,6 @@
 <script>
 import {User} from "@element-plus/icons-vue";
+import {mapState} from "vuex";
 
 export default {
   data() {
@@ -9,6 +10,9 @@ export default {
   props: [
     "zhedie"
   ],
+  computed: {
+    ...mapState(['currentPath'])
+  },
   components: {
     User
   }
@@ -16,7 +20,7 @@ export default {
 </script>
 <template>
   <!--el-menu自带的collapse属性-->
-  <el-menu :collapse="!zhedie"
+  <el-menu :default-active="currentPath" :collapse="!zhedie"
            :collapse-transition="false" :router="true" class="el-menu-vertical-demo">
     <el-menu-item index="/">首页</el-menu-item>
     <el-sub-menu index="/manager">
