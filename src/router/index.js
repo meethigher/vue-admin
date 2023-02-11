@@ -22,6 +22,7 @@ export const routers = [
         path: "/",
         //命名路由，路由的别名
         name: "home",
+        label: "首页",
         //当访问到对应路由后需要展示的组件
         //路由的急加载
         component: HomeView,
@@ -75,6 +76,7 @@ export const routers = [
     {
         path: "/login",
         name: "login",
+        label: "登录",
         //路由的懒加载，对于一些不确定立即需要显示的页面，可以使用懒加载
         component: () => import("../views/LoginView.vue")
     }
