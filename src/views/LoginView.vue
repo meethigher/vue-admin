@@ -34,7 +34,7 @@
                     adminname: this.userName,
                     password: this.userPassword
                 }).then(res => {
-                    let data = res.data;
+                    let data = res;
                     if (data.code === "200") {
                         //跳转页面前，将数据存储
                         //第一种修改数据方法

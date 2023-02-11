@@ -16,7 +16,7 @@ import BannerIndexView from "../views/banner/BannerIndexView.vue";
 import BannerListView from "../views/banner/BannerListView.vue";
 import AddBannerView from "../views/banner/AddBannerView.vue";
 // 配置路由规则
-const routers = [
+export const routers = [
     {
         //访问时的路径
         path: "/",
