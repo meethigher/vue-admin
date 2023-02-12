@@ -138,22 +138,40 @@ export default {
       this.defaultCheckedKeys = checkedKeys;
     },
     deleteAdminButton(row) {
-      deleteAdmin({adminid: row.adminid}).then(res => {
-        if (res.code == "200") {
-          ElMessage.success(res.message);
-          //获取管理员列表
-          adminList().then(res => {
-            console.log(res);
-            if (res.code == "200") {
-              this.tableData = res.data;
-            } else {
-              ElMessage.error(res.message);
-            }
+      ElMessageBox.confirm(
+          "删除管理员名称为" + row.adminname + "的账号, 是否继续?",
+          "操作确认提示",
+          {
+            confirmButtonText: "确认",
+            cancelButtonText: "取消",
+            type: "warning",
+          }
+      )
+          .then(() => {
+            deleteAdmin({adminid: row.adminid}).then(res => {
+              if (res.code == "200") {
+                ElMessage.success(res.message);
+                //获取管理员列表
+                adminList().then(res => {
+                  console.log(res);
+                  if (res.code == "200") {
+                    this.tableData = res.data;
+                  } else {
+                    ElMessage.error(res.message);
+                  }
+                });
+              } else {
+                ElMessage.error(res.message);
+              }
+            });
+          })
+          .catch(() => {
+            ElMessage({
+              type: "info",
+              message: "操作取消",
+            });
           });
-        } else {
-          ElMessage.error(res.message);
-        }
-      });
+
     },
     add() {
       //获取权限路由,处理数据

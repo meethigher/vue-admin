@@ -22,14 +22,14 @@
         methods: {
             ...mapMutations(["updateUserInfo"]),
             submitForm() {
-                if (this.userName.length < 4) {
-                    ElMessage.error("账号长度过短!");
-                    return;
-                }
-                if (this.userPassword.length < 4) {
-                    ElMessage.error("密码长度过短!");
-                    return;
-                }
+                // if (this.userName.length < 4) {
+                //     ElMessage.error("账号长度过短!");
+                //     return;
+                // }
+                // if (this.userPassword.length < 4) {
+                //     ElMessage.error("密码长度过短!");
+                //     return;
+                // }
                 login({
                     adminname: this.userName,
                     password: this.userPassword

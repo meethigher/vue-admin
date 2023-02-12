@@ -44,3 +44,11 @@ export function deleteAdmin(params) {
         data: params
     });
 }
+
+//用户列表数据
+export function userList() {
+    return ajax({
+        method: "get",
+        url: "/user/list"
+    });
+}

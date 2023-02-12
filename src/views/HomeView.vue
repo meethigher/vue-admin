@@ -78,7 +78,7 @@ export default {
           <el-icon :size="30" @click="collapse=!collapse">
             <component :is="headerLeft"></component>
           </el-icon>
-          <span>欢迎 {{ $store.state.userInfo.adminname }} <el-button @click="logout">退出</el-button></span>
+          <span>欢迎您, {{ $store.state.userInfo.adminname }} <el-button @click="logout">退出</el-button></span>
         </el-header>
         <!--内容-->
         <el-main>
