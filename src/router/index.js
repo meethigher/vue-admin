@@ -15,6 +15,21 @@ import UserListView from "../views/manager/UserListView.vue";
 import BannerIndexView from "../views/banner/BannerIndexView.vue";
 import BannerListView from "../views/banner/BannerListView.vue";
 import AddBannerView from "../views/banner/AddBannerView.vue";
+//产品管理
+import ProductIndexView from "../views/product/ProductIndexView.vue";
+import ProductListView from "../views/product/ProductListView.vue";
+import AddProductView from "../views/product/AddProductView.vue";
+//导入图标
+import EChartsIndexView from "../views/echarts/EChartsIndexView.vue";
+import EChartsShowView from "../views/echarts/EChartsShowView.vue";
+//excel管理
+import ExcelIndexView from "../views/excel/ExcelIndexView.vue";
+import ExcelImportView from "../views/excel/ExcelImportView.vue";
+import ExcelExportView from "../views/excel/ExcelExportView.vue";
+import EditorIndexView from "../views/editor/EditorIndexView.vue";
+import EditorShowView from "../views/editor/EditorShowView.vue";
+import MapIndexView from "../views/map/MapIndexView.vue";
+import MapShowView from "../views/map/MapShowView.vue";
 // 配置路由规则
 export const routers = [
     {
@@ -70,7 +85,90 @@ export const routers = [
                     },
 
                 ]
-            }
+            },
+            {
+                path: "product",
+                name: "product",
+                label: "产品管理",
+                component: ProductIndexView,
+                children: [
+                    {
+                        path: "productList",
+                        name: "productList",
+                        label: "产品列表",
+                        component: ProductListView
+                    },
+                    {
+                        path: "addProduct",
+                        name: "addProduct",
+                        label: "添加产品",
+                        component: AddProductView
+                    },
+
+                ]
+            },
+            {
+                path: "echarts",
+                name: "echarts",
+                label: "图标管理",
+                component: EChartsIndexView,
+                children: [
+                    {
+                        path: "echartsShow",
+                        name: "echartsShow",
+                        label: "显示图标",
+                        component: EChartsShowView
+                    }
+                ]
+            },
+            {
+                path: "excel",
+                name: "excel",
+                label: "Excel管理",
+                component: ExcelIndexView,
+                children: [
+                    {
+                        path: "excelImport",
+                        name: "excelImport",
+                        label: "Excel导入",
+                        component: ExcelImportView
+                    },
+                    {
+                        path: "excelExport",
+                        name: "excelExport",
+                        label: "Excel导出",
+                        component: ExcelExportView
+                    }
+                ]
+            },
+            {
+                path: "editor",
+                name: "editor",
+                label: "富文本编辑器",
+                component: EditorIndexView,
+                children: [
+                    {
+                        path: "editorShow",
+                        name: "editorShow",
+                        label: "显示编辑器",
+                        component: EditorShowView
+                    }
+                ]
+            },
+            {
+                path: "map",
+                name: "map",
+                label: "地图管理",
+                component: MapIndexView,
+                children: [
+                    {
+                        path: "mapShow",
+                        name: "mapShow",
+                        label: "百度地图",
+                        component: MapShowView
+                    }
+                ]
+            },
         ]
     },
     {

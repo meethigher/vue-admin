@@ -25,7 +25,7 @@ export default {
       bannerList: [],
       //当前页
       pageIndex: 1,
-      pageSize: 1,
+      pageSize: 5,
     };
   },
   mounted() {

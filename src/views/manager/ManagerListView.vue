@@ -234,6 +234,8 @@ export default {
       if (res.code == "200") {
         this.tableData = res.data;
       } else {
+        localStorage.clear();
+        this.$store.commit("updateUserInfo", {});
         this.$router.push("/login");
       }
     });
